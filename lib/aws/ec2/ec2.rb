@@ -1,4 +1,4 @@
-# Documentation: http://docs.amazonwebservices.com/AWSEC2/latest/DeveloperGuide/
+# Documentation: http://docs.amazonwebservices.com/AWSEC2/latest/APIReference/
 
 module AWS
   module EC2
@@ -11,12 +11,48 @@ module AWS
       aws_request(host, options)
     end
     
-    def describe_images
-      ec2_request(:Action => 'DescribeImages')
+    def describe_addresses
+      ec2_request(:Action => 'DescribeAddresses')
     end
     
     def describe_availability_zones
       ec2_request(:Action => 'DescribeAvailabilityZones')
+    end
+    
+    def describe_images
+      ec2_request(:Action => 'DescribeImages')
+    end
+    
+    def describe_instances
+      ec2_request(:Action => 'DescribeInstances')
+    end
+    
+    def describe_key_pairs
+      ec2_request(:Action => 'DescribeKeyPairs')
+    end
+    
+    def describe_regions
+      ec2_request(:Action => 'DescribeRegions')
+    end
+    
+    def describe_security_groups
+      ec2_request(:Action => 'DescribeSecurityGroups')
+    end
+    
+    def describe_snapshots
+      ec2_request(:Action => 'DescribeSnapshots')
+    end
+    
+    def describe_volumes
+      ec2_request(:Action => 'DescribeVolumes')
+    end
+    
+    # Requires: InstanceId
+    def monitor_instances(options)
+      options.merge!(
+        :Action => :MonitorInstances
+      )
+      ec2_request(options)
     end
     
     # Requires: ImageId
@@ -43,18 +79,6 @@ module AWS
         :Action => :UnmonitorInstances
       )
       ec2_request(options)
-    end
-    
-    # Requires: InstanceId
-    def monitor_instances(options)
-      options.merge!(
-        :Action => :MonitorInstances
-      )
-      ec2_request(options)
-    end
-    
-    def describe_instances
-      ec2_request(:Action => 'DescribeInstances')
     end
     
   end
