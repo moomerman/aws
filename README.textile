@@ -10,8 +10,43 @@ h2. Currently implemented:
     
 h2. Usage
 
+Simply provide your amazon access key and amazon secret key to start making calls:
+
 <pre><code>client = AWS::EC2::Client.new(:access_key_id => ACCESS_KEY_ID, :secret_access_key => SECRET_ACCESS_KEY)
 client.describe_regions
+
+<DescribeRegionsResponse xmlns="http://ec2.amazonaws.com/doc/2009-04-04/">
+    <requestId>669a4bca-4777-48ac-96e7-e5a61a13a129</requestId>
+    <regionInfo>
+        <item>
+            <regionName>eu-west-1</regionName>
+            <regionEndpoint>eu-west-1.ec2.amazonaws.com</regionEndpoint>
+        </item>
+        <item>
+            <regionName>us-east-1</regionName>
+            <regionEndpoint>us-east-1.ec2.amazonaws.com</regionEndpoint>
+        </item>
+    </regionInfo>
+</DescribeRegionsResponse>
 </code></pre>
     
+You can also specify a region to make calls in a specific region:
+<pre><code>client = AWS::EC2::Client.new(:access_key_id => ACCESS_KEY_ID, :secret_access_key => SECRET_ACCESS_KEY, :region => 'eu-west-1')
+client.describe_availability_zones
 
+<DescribeAvailabilityZonesResponse xmlns="http://ec2.amazonaws.com/doc/2009-04-04/">
+    <requestId>341afe6d-f1cf-4c04-8302-d76ec26e3049</requestId>
+    <availabilityZoneInfo>
+        <item>
+            <zoneName>eu-west-1a</zoneName>
+            <zoneState>available</zoneState>
+            <regionName>eu-west-1</regionName>
+        </item>
+        <item>
+            <zoneName>eu-west-1b</zoneName>
+            <zoneState>available</zoneState>
+            <regionName>eu-west-1</regionName>
+        </item>
+    </availabilityZoneInfo>
+</DescribeAvailabilityZonesResponse>
+</code></pre>
