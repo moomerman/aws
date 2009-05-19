@@ -50,3 +50,7 @@ client.describe_availability_zones
     </availabilityZoneInfo>
 </DescribeAvailabilityZonesResponse>
 </code></pre>
+
+h2. TODO
+
+ - Parse the XML response into something useful
