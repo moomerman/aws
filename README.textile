@@ -1,0 +1,17 @@
+h1. AWS - Amazon Web Services client library for Ruby
+
+h2. Currently implemented:
+
+ EC2
+    - EC2 API
+    - Cloud Watch
+    - Elastic Load Balancing
+    - Auto Scaling
+    
+h2. Usage
+
+<pre><code>client = AWS::EC2::Client.new(:access_key_id => ACCESS_KEY_ID, :secret_access_key => SECRET_ACCESS_KEY)
+client.describe_regions
+</code></pre>
+    
+
