@@ -1,11 +1,13 @@
 require 'aws/ec2/request'
+require 'aws/ec2/parser'
 require 'aws/ec2/api'
 
 module AWS
   module EC2
     class Client
-      include EC2::Request
       include EC2
+      include EC2::Request
+      include EC2::Parser
 
       def initialize(options = {})
         @access_key_id = options[:access_key_id]
@@ -33,7 +35,8 @@ module AWS
         
         puts "calling host=#{host}, params=#{camelized_options.inspect}" if @debug
         
-        aws_request(host, camelized_options)
+        xml_response = aws_request(host, camelized_options)
+        parse(xml_response)
       end
 
       def camelize(key)
